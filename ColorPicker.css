@@ -1,0 +1,102 @@
+/* ---------------------Box style-------------------*/
+.box1 {
+    width: 12vw;
+    height: 12vw;
+    margin-left: 42vw;
+    margin-top: 10vw;
+    background-color: rgb(150, 150, 150);
+    box-shadow: 10px 10px 15px lightgray;
+    border-radius: 10px;
+}
+
+.box2 {
+    width: 12vw;
+    height: 12vw;
+    margin-left: 55vw;
+    margin-top: -12vw;
+    background-color: rgb(150, 150, 150);
+    box-shadow: 10px 10px 15px lightgray;
+    border-radius: 10px;
+}
+
+.box3 {
+    width: 12vw;
+    height: 12vw;
+    margin: -12vw 0vw 0vw 68vw;
+    background-color: rgb(150, 150, 150);
+    box-shadow: 10px 10px 15px lightgray;
+    border-radius: 10px;
+}
+.box4 {
+    width: 12vw;
+    height: 12vw;
+    margin: -12vw 0vw 0vw 81vw;
+    background-color: rgb(150, 150, 150);
+    box-shadow: 10px 10px 15px lightgray;
+    border-radius: 10px;
+}
+
+/* ---------------------überschrift-------------------*/
+#h{
+    margin: 5vw 0vw 0vw 9vw;
+    font-family: "Roboto Medium", sans-serif;
+    font-size: 7vw;
+    color: darkgrey;
+}
+#h2{
+    margin: 1vw 0vw 0vw 9vw;
+    font-family: "Roboto Medium", sans-serif;
+
+    color: darkgrey;
+}
+#h3{
+    margin: 1vw 0vw 0vw 9vw;
+    font-family: "Roboto Medium", sans-serif;
+    font-size: 15px;
+
+    color: darkgrey;
+}
+/*---------------------slider----------------------*/
+.sliders {
+    display: inline-block;
+    zoom: 1; *display: inline;
+    width: 17vw;
+    vertical-align: middle;
+    overflow: hidden;
+    margin: -11vw 0vw 7vw 10vw;    /*top right bottom left*/
+    font-family: "Roboto Medium", sans-serif;
+    color: darkgray;
+}
+.color {
+    display: inline-block;
+    zoom:1; *display: inline;
+    width: 12vw;
+    height: 12vw;
+    vertical-align: middle;
+    margin: -20vw 0vw 0vw -2vw;
+    border: 0.4px solid;
+    border-radius: 10px;
+    background-color: darkgray;
+    box-shadow: 10px 10px 15px lightgray;
+}
+
+.sliders dt,
+.output dt {
+    float: left;
+    clear: left;
+    width: 5vw;
+    height: 2vw;
+    line-height: 2vw;
+}
+.sliders dd,
+.output dd {
+    float: left;
+    height: 4vw;
+    line-height: 2vw;
+    margin: 0;
+}
+
+/* ---------------------Button style-------------------*/
+.btn-outline-info{
+    margin: -1vw 0vw 0vw -9.5vw;  /*top right bottom left*/
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>ColorPicker</title>
+
+    <link rel="stylesheet" href="ColorPicker.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <script src="brain.js"></script>
+
+
+    <script src="http://yui.yahooapis.com/3.18.1/build/yui/yui-min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<h1 id="h"><strong>Colorpicker</strong></h1>
+<h2 id="h2">Wähle eine Farbe und die Maschine zeigt dir vier Farben, die ihrer Meinung nach passen.</h2>
+<div class="box" id="harmony">
+    <div class="box1" id="harmony1"></div>
+    <div class="box2" id="harmony2"></div>
+    <div class="box3" id="harmony3"></div>
+    <div class="box4" id="harmony4"></div>
+</div>
+
+<!----------------------------------slider------------------------------------->
+<div class="sliders yui3-skin-sam">
+    <dl>
+        <dt>R: <span id="r-val" class="val"></span></dt><dd id="r-slider"></dd>
+        <dt>G: <span id="g-val" class="val"></span></dt><dd id="g-slider"></dd>
+        <dt>B: <span id="b-val" class="val"></span></dt><dd id="b-slider"></dd>
+    </dl>
+</div>
+<div class="color"></div>
+<button id="button" type="button" class="btn btn-outline-info">Change Color</button>
+
+<!-------------------------------------silder function------------------------>
+<script>
+    YUI().use('slider', 'color', function(Y){
+        // sliders
+        var rSlider = new Y.Slider({ min: 0, max: 255, value: Math.round(Math.random()*255) }),
+            gSlider = new Y.Slider({ min: 0, max: 255, value: Math.round(Math.random()*255) }),
+            bSlider = new Y.Slider({ min: 0, max: 255, value: Math.round(Math.random()*255) }),
+
+            // slider values
+            rVal = Y.one('#r-val'),
+            gVal = Y.one('#g-val'),
+            bVal = Y.one('#b-val'),
+
+            // color strings
+            //hex = Y.one('#hex'),
+            //rgb = Y.one('#rgb'),
+            //hsl = Y.one('#hsl'),
+
+            // color chip
+            color = Y.one('.color');
+
+        // render sliders
+        rSlider.render('#r-slider');
+        gSlider.render('#g-slider');
+        bSlider.render('#b-slider');
+
+        // register update events
+        rSlider.after('thumbMove', function(e) {
+            rVal.set('text', rSlider.get('value'));
+            updateColors();
+        });
+        gSlider.after('thumbMove', function(e) {
+            gVal.set('text', gSlider.get('value'));
+            updateColors();
+        });
+        bSlider.after('thumbMove', function(e) {
+            bVal.set('text', bSlider.get('value'));
+            updateColors();
+        });
+
+        // update the colors strings
+        function updateColors() {
+            var r = rSlider.get('value'),
+                g = gSlider.get('value'),
+                b = bSlider.get('value'),
+                rgbStr = Y.Color.fromArray([r,g,b], Y.Color.TYPES.RGB);
+
+            color.setStyle('backgroundColor', rgbStr);
+
+            //rgb.set('text', rgbStr);
+            //hex.set('text', Y.Color.toHex(rgbStr));
+            //hsl.set('text', Y.Color.toHSL(rgbStr));
+        }
+        rVal.set( rSlider.get('value'));
+        gVal.set( gSlider.get('value'));
+        bVal.set( bSlider.get('value'));
+        updateColors();
+    });
+</script>
+<script src="ColorPicker.js"></script>
+<h3 id="h3">Dieser Colorpicker basiert auf einem neuronalen Netz, das mit ähnlichen Farbkominationen "gefüttert" wurde.
+    <br> So wurde das Netz trainiert Farben zu kombinieren um neue Farbkombinationen zu erstellen</h3>
+</body>
+</html>
